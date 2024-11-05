@@ -1,0 +1,5 @@
+/backend/Api/.vs
+/backend/Api/bin
+/backend/Api/obj
+/webapp/.vscode
+webapp/.editorconfig

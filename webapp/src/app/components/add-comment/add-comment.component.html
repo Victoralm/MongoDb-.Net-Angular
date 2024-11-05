@@ -1,0 +1,73 @@
+<form [formGroup]="newCommentForm" (ngSubmit)="onSubmit()">
+  <div class="container-fluid">
+    <div class="row">
+      <h5 class="mt-1 mb-3">New Comment</h5>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name</span>
+        </div>
+        <input type="text" class="form-control mb-2" aria-label="New Comment"
+          [formControl]="newCommentForm.controls.name" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Email</span>
+        </div>
+        <input type="text" class="form-control mb-2" aria-label="New Comment" formControlName="email" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Movie Id</span>
+        </div>
+        <select class="form-select mb-2" aria-label="Default select example" formControlName="movieId">
+          <option selected disabled>Open this select menu</option>
+          @for (movieId of movieIds; track $index) {
+          <option value="{{movieId}}">{{movieId}}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Comment</span>
+        </div>
+        <textarea class="form-control mb-3" aria-label="New Comment" formControlName="comment"></textarea>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+      <div class="col">
+        <button type="submit" class="btn btn-success" style="text-align: center;" placement="top"
+          ngbTooltip="Salvar comentário">
+          <ng-icon name="bootstrapSave"></ng-icon>
+        </button>
+      </div>
+    </div>
+    @if(invalidEmail) {
+    <div class="row bg-danger mt-4">
+      <p class="control-error text-center fs-5 mt-2">Name é obrigatório</p>
+    </div>
+    }
+    @if(invalidEmail) {
+    <div class="row bg-danger mt-4">
+      <p class="control-error text-center fs-5 mt-2">Email inválido</p>
+    </div>
+    }
+    @if(invalidMovieId) {
+    <div class="row bg-danger mt-4">
+      <p class="control-error text-center fs-5 mt-2">MovieId é obrigatório</p>
+    </div>
+    }
+    @if(invalidComment) {
+    <div class="row bg-danger mt-4">
+      <p class="control-error text-center fs-5 mt-2">Comment é obrigatório</p>
+    </div>
+    }
+  </div>
+</form>
