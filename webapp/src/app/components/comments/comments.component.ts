@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, Input, signal } from '@angular/core';
-import { Comments, CommentsApi } from '../../models/comments.model';
+import { Comments } from '../../models/comments.model';
 import { CommentsService } from '../../services/comments.service';
 
 @Component({

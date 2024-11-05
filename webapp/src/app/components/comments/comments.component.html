@@ -57,9 +57,12 @@
             </div>
           </div>
           } @else {
-          <h5 class="card-title"><a href="mailto:{{comment.email}}">{{comment.name}}</a></h5>
-          <textarea class="form-control" aria-label="New Comment" id="newText" name="newText" #newText
-            [value]="comment.text">{{comment.text}}</textarea>
+          <div class="row d-flex mb-1" style="min-height: 80%;">
+            <div class="col d-flex">
+              <textarea class="form-control" aria-label="New Comment" rows="6" id="newText" name="newText" #newText
+                [value]="comment.text">{{comment.text}}</textarea>
+            </div>
+          </div>
           <div class="row">
             <div class="col">
               <button type="button" class="btn btn-success" style="text-align: center;"
