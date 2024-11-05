@@ -38,7 +38,7 @@ export class CommentsComponent {
         },
         error: (error: Error) => {
           console.log(error)
-          this.error.set('Algo deu errado ao carregar os dados...');
+          this.error.set('Something goes wrong while getting data, please try again later.');
         }
       });
 
