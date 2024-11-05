@@ -12,12 +12,14 @@ import { bootstrapPencil, bootstrapPlusSquareFill, bootstrapSave, bootstrapStopC
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommentsCardComponent } from './components/comments-card/comments-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentsComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    CommentsCardComponent
   ],
   imports: [
     BrowserModule,

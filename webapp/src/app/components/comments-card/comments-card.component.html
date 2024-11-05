@@ -1,0 +1,67 @@
+<div class="row">
+  @for (comment of comments; track comment.id; let idx = $index) {
+  <div class="col col-2 pt-1 d-flex align-items-stretch">
+    <div class="card" style="width: 18rem;">
+      <h5 class="card-header">
+        <a href="mailto:{{comment.email}}">{{comment.name}}</a>
+      </h5>
+      <div class="card-body">
+        @if(!comment.edit) {
+        <div class="row d-flex" style="min-height: 80%;">
+          <div class="col d-flex">
+            @if(comment.text.length > 150)
+            {
+            <p class="card-text">{{ comment.text.slice(0, 150) }} ...</p>
+            } @else {
+            <p class="card-text">{{ comment.text }}</p>
+            }
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col d-flex">
+            <button style="height:42px !important;" type="button" class="btn btn-primary mt-auto"
+              style="text-align: center;" (click)="toggleEdit(idx)" placement="top" ngbTooltip="Edit the comment">
+              <ng-icon name="bootstrapPencil"></ng-icon>
+            </button>
+          </div>
+          <div class="col">
+            <div class="d-flex justify-content-end">
+              <button style="height:42px !important;" type="button" class="btn btn-danger mt-auto"
+                (click)="deleteComment(comment.id)" placement="top" ngbTooltip="Deletar the comment">
+                <ng-icon name="bootstrapXOctagonFill"></ng-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        } @else {
+        <div class="row d-flex mb-1" style="min-height: 80%;">
+          <div class="col d-flex">
+            <textarea class="form-control" aria-label="New Comment" rows="6" id="newText" name="newText" #newText
+              [value]="comment.text">{{comment.text}}</textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-success" style="text-align: center;"
+              (click)="updateComment(comment.id, newText.value)" placement="top" ngbTooltip="Update the comment">
+              <ng-icon name="bootstrapSave"></ng-icon>
+            </button>
+          </div>
+          <div class="col">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-warning" style="text-align: center;" (click)="toggleEdit(idx)"
+                placement="top" ngbTooltip="Cancel update">
+                <ng-icon name="bootstrapStopCircleFill"></ng-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="card-footer text-muted">
+        {{ comment.date }}
+      </div>
+    </div>
+  </div>
+  }
+</div>

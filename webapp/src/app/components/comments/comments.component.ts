@@ -46,27 +46,4 @@ export class CommentsComponent {
     });
   }
 
-  toggleEdit(index: number) {
-      this.comments()[index].edit = !this.comments()[index].edit;
-  }
-
-  updateComment(commentId: string, newText: string) {
-    const subscription = this.commentsService.updateComment(commentId, newText).subscribe({
-      complete: () => {this.getComments();}
-    });
-
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-    });
-  }
-
-  deleteComment(commentId: string) {
-    const subscription = this.commentsService.deleteComment(commentId).subscribe({
-      complete: () => {this.getComments();}
-    });
-
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-    });
-  }
 }
