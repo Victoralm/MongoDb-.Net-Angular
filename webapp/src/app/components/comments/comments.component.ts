@@ -25,7 +25,8 @@ export class CommentsComponent {
   getComments() {
     this.isFetching.set(true);
     const subscription = this.commentsService.getComments().subscribe({
-        next: (response) => {
+      next: (response) => {
+        this.movieIds = [];
           response.forEach(comment => {
             comment.edit = false;
             this.movieIds.push(comment.movieId)
