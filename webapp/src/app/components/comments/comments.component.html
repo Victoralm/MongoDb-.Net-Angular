@@ -12,7 +12,7 @@
   <div class="d-flex justify-content-end">
     <div ngbDropdown class="d-inline-block">
       <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle placement="left"
-        ngbTooltip="Adicionar novo comentário">
+        ngbTooltip="Add a new comment">
         <ng-icon name="bootstrapPlusSquareFill"></ng-icon>
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="col col-6 pt-1 mb-5" style="min-width: 800px;">
@@ -43,14 +43,14 @@
           <div class="row d-flex">
             <div class="col d-flex">
               <button style="height:42px !important;" type="button" class="btn btn-primary mt-auto"
-                style="text-align: center;" (click)="toggleEdit(idx)" placement="top" ngbTooltip="Editar comentário">
+                style="text-align: center;" (click)="toggleEdit(idx)" placement="top" ngbTooltip="Edit the comment">
                 <ng-icon name="bootstrapPencil"></ng-icon>
               </button>
             </div>
             <div class="col">
               <div class="d-flex justify-content-end">
                 <button style="height:42px !important;" type="button" class="btn btn-danger mt-auto"
-                  (click)="deleteComment(comment.id)" placement="top" ngbTooltip="Deletar comentário">
+                  (click)="deleteComment(comment.id)" placement="top" ngbTooltip="Deletar the comment">
                   <ng-icon name="bootstrapXOctagonFill"></ng-icon>
                 </button>
               </div>
@@ -63,14 +63,14 @@
           <div class="row">
             <div class="col">
               <button type="button" class="btn btn-success" style="text-align: center;"
-                (click)="updateComment(comment.id, newText.value)" placement="top" ngbTooltip="Atualizar comentário">
+                (click)="updateComment(comment.id, newText.value)" placement="top" ngbTooltip="Update the comment">
                 <ng-icon name="bootstrapSave"></ng-icon>
               </button>
             </div>
             <div class="col">
               <div class="d-flex justify-content-end">
                 <button type="button" class="btn btn-warning" style="text-align: center;" (click)="toggleEdit(idx)"
-                  placement="top" ngbTooltip="Cancelar edição de comentário">
+                  placement="top" ngbTooltip="Cancel update">
                   <ng-icon name="bootstrapStopCircleFill"></ng-icon>
                 </button>
               </div>

@@ -44,29 +44,29 @@
     <div class="row" style="margin-top: 10px;">
       <div class="col">
         <button type="submit" class="btn btn-success" style="text-align: center;" placement="top"
-          ngbTooltip="Salvar comentário">
+          ngbTooltip="Save comment">
           <ng-icon name="bootstrapSave"></ng-icon>
         </button>
       </div>
     </div>
-    @if(invalidEmail) {
-    <div class="row bg-danger mt-4">
-      <p class="control-error text-center fs-5 mt-2">Name é obrigatório</p>
+    @if(invalidName) {
+    <div class="row bg-warning mt-4">
+      <p class="control-error text-center fs-6 mt-2">Name é obrigatório</p>
     </div>
     }
     @if(invalidEmail) {
-    <div class="row bg-danger mt-4">
-      <p class="control-error text-center fs-5 mt-2">Email inválido</p>
+    <div class="row bg-warning mt-4">
+      <p class="control-error text-center fs-6 mt-2">Email inválido</p>
     </div>
     }
     @if(invalidMovieId) {
-    <div class="row bg-danger mt-4">
-      <p class="control-error text-center fs-5 mt-2">MovieId é obrigatório</p>
+    <div class="row bg-warning mt-4">
+      <p class="control-error text-center fs-6 mt-2">MovieId é obrigatório</p>
     </div>
     }
     @if(invalidComment) {
-    <div class="row bg-danger mt-4">
-      <p class="control-error text-center fs-5 mt-2">Comment é obrigatório</p>
+    <div class="row bg-warning mt-4">
+      <p class="control-error text-center fs-6 mt-2">Comment é obrigatório</p>
     </div>
     }
   </div>

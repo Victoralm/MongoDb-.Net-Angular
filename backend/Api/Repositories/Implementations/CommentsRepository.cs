@@ -32,7 +32,6 @@ namespace Api.Repositories.Implementations
 
         public async Task<UpdateResult> UpdateCommentAsync(string commentId, string newText)
         {
-            //var filter = Builders<CommentsModel>.Filter.Eq(comment => comment.Id, new ObjectId(commentId));
             var filter = Builders<CommentsModel>.Filter.Eq(comment => comment.Id, commentId);
             var update = Builders<CommentsModel>.Update.Set(comment => comment.Text, newText);
             return await _collection.UpdateOneAsync(filter, update);
@@ -40,7 +39,6 @@ namespace Api.Repositories.Implementations
 
         public async Task<DeleteResult> DeleteCommentAsync(string commentId)
         {
-            //var filter = Builders<CommentsModel>.Filter.Eq(comment => comment.Id, new ObjectId(commentId));
             var filter = Builders<CommentsModel>.Filter.Eq(comment => comment.Id, commentId);
             return await _collection.DeleteOneAsync(filter);
         }
