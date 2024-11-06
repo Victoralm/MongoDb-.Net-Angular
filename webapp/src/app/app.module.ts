@@ -27,7 +27,8 @@ import { CommentsCardComponent } from './components/comments-card/comments-card.
     NgbModule,
     NgIconsModule.withIcons({ featherAirplay, featherPenTool, bootstrapPencil, bootstrapXSquare, bootstrapXOctagonFill, bootstrapPlusSquareFill, bootstrapStopCircleFill, bootstrapSave }),
     ReactiveFormsModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    NgbAlertModule
   ],
   providers: [
     provideClientHydration(),

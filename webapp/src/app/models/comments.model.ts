@@ -8,7 +8,6 @@ export interface Comments {
   edit: boolean;
 }
 
-
 export interface CommentsApi {
   id: string;
   name: string;

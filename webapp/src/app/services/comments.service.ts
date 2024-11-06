@@ -22,7 +22,7 @@ export class CommentsService {
           console.log('Error caught in service');
           console.error(e.message);
           return throwError(() => {
-            new Error('Algo deu errado ao carregar os dados...')
+            new Error('Something went wrong while getting the data, please try again later.')
           });
         })
       );

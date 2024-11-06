@@ -1,5 +1,5 @@
-import { Component, DestroyRef, inject, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, DestroyRef, EventEmitter, inject, Input, Output } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommentsService } from '../../services/comments.service';
 import { CommentsApi } from '../../models/comments.model';
 
@@ -10,6 +10,7 @@ import { CommentsApi } from '../../models/comments.model';
 })
 export class AddCommentComponent {
   @Input() movieIds: string[] = [];
+  @Output("getComments") getComments: EventEmitter<any> = new EventEmitter();
 
   newCommentForm = new FormGroup({
     name: new FormControl('', {
@@ -54,12 +55,30 @@ export class AddCommentComponent {
 
   constructor(private commentsService: CommentsService) { }
 
+  onInit() {
+    this.movieIds = [];
+  }
+
+  validateNewComment() {
+    return !this.invalidName &&
+      !this.invalidEmail &&
+      !this.invalidMovieId &&
+      !this.invalidComment &&
+      this.newCommentForm.controls.name.value != '' &&
+      this.newCommentForm.controls.email.value != '' &&
+      this.newCommentForm.controls.movieId.value != '' &&
+      this.newCommentForm.controls.comment.value != '';
+  }
+
   onSubmit() {
-    if (!this.invalidName && !this.invalidEmail && !this.invalidMovieId && !this.invalidComment) {
-      let name: string = this.newCommentForm.value.name || '';
-      let email: string = this.newCommentForm.value.email || '';
-      let movieId: string = this.newCommentForm.value.movieId || '';
-      let comment: string = this.newCommentForm.value.comment || '';
+    // let isValid = !this.invalidName && !this.invalidEmail && !this.invalidMovieId && !this.invalidComment;
+    // console.log(isValid);
+
+    if (this.validateNewComment()) {
+      let name: string = this.newCommentForm.controls.name.value || '';
+      let email: string = this.newCommentForm.controls.email.value || '';
+      let movieId: string = this.newCommentForm.controls.movieId.value || '';
+      let comment: string = this.newCommentForm.controls.comment.value || '';
       let dateTime = new Date();
 
       let newComment: CommentsApi = {
@@ -71,7 +90,9 @@ export class AddCommentComponent {
         date: dateTime
       };
 
-      const subscription = this.commentsService.addComment(newComment, movieId).subscribe();
+      const subscription = this.commentsService.addComment(newComment, movieId).subscribe({
+        complete: () => {this.getComments.emit();}
+      });
 
       this.destroyRef.onDestroy(() => {
         subscription.unsubscribe();

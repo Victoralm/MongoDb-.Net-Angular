@@ -6,7 +6,7 @@ namespace Api.Repositories.Interfaces
     public interface ICommentsRepository
     {
         Task<IEnumerable<CommentsModel>> GetCommentsAsync();
-        Task<string> AddCommentAsync(CommentsModel comment, string movieId);
+        Task AddCommentAsync(CommentsModel comment, string movieId);
         Task<UpdateResult> UpdateCommentAsync(string commentId, string newText);
         Task<DeleteResult> DeleteCommentAsync(string commentId);
     }

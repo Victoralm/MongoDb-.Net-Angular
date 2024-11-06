@@ -3,6 +3,7 @@ using Api.Models;
 using Api.Repositories.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Globalization;
 using static MongoDB.Driver.WriteConcern;
 
 namespace Api.Repositories.Implementations
@@ -20,14 +21,13 @@ namespace Api.Repositories.Implementations
 
         public async Task<IEnumerable<CommentsModel>> GetCommentsAsync()
         {
-            List<CommentsModel> commentsModel = await _collection.Find(Builders<CommentsModel>.Filter.Empty).Limit(12).ToListAsync();
+            List<CommentsModel> commentsModel = await _collection.Find(Builders<CommentsModel>.Filter.Empty).SortBy(i => i.Id).SortByDescending(d => d.Date).Limit(12).ToListAsync();
             return commentsModel;
         }
 
-        public async Task<string> AddCommentAsync(CommentsModel comment, string movieId)
+        public async Task AddCommentAsync(CommentsModel comment, string movieId)
         {
             await _collection.InsertOneAsync(comment);
-            return comment.Id.ToString();
         }
 
         public async Task<UpdateResult> UpdateCommentAsync(string commentId, string newText)

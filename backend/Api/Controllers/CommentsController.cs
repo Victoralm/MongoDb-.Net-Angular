@@ -26,7 +26,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("mongo")]
-        public async Task<ActionResult<CommentsModel>> Post([FromBody] CommentsModel comment, string movieId)
+        public async Task<ActionResult> Post([FromBody] CommentsModel comment, string movieId)
         {
             if (comment == null)
                 return Problem("No records found. Please, try again later.");
@@ -34,8 +34,8 @@ namespace Api.Controllers
             if (!ModelState.IsValid)
                 return ValidationProblem(ModelState);
 
-            string newId = await _commentService.AddCommentAsync(comment, movieId);
-            return Ok(newId);
+            await _commentService.AddCommentAsync(comment, movieId);
+            return Ok();
         }
 
         //[HttpPut("{id, comment}", Name = "Mongo")]

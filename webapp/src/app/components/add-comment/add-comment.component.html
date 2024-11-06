@@ -26,7 +26,7 @@
           <span class="input-group-text">Movie Id</span>
         </div>
         <select class="form-select mb-2" aria-label="Default select example" formControlName="movieId">
-          <option selected disabled>Open this select menu</option>
+          <option disabled>Open this select menu</option>
           @for (movieId of movieIds; track $index) {
           <option value="{{movieId}}">{{movieId}}</option>
           }
@@ -50,24 +50,24 @@
       </div>
     </div>
     @if(invalidName) {
-    <div class="row bg-warning mt-4">
-      <p class="control-error text-center fs-6 mt-2">Name é obrigatório</p>
-    </div>
+    <ngb-alert class="mt-2" [dismissible]="false">
+      <strong>Empty Name!</strong> Please, insert some text before save.
+    </ngb-alert>
     }
     @if(invalidEmail) {
-    <div class="row bg-warning mt-4">
-      <p class="control-error text-center fs-6 mt-2">Email inválido</p>
-    </div>
+    <ngb-alert class="mt-2" [dismissible]="false">
+      <strong>Invalid E-mail!</strong> Please, provade a valid e-mail.
+    </ngb-alert>
     }
     @if(invalidMovieId) {
-    <div class="row bg-warning mt-4">
-      <p class="control-error text-center fs-6 mt-2">MovieId é obrigatório</p>
-    </div>
+    <ngb-alert class="mt-2" [dismissible]="false">
+      <strong>Invalid MovieId!</strong> Please, select a valid option.
+    </ngb-alert>
     }
     @if(invalidComment) {
-    <div class="row bg-warning mt-4">
-      <p class="control-error text-center fs-6 mt-2">Comment é obrigatório</p>
-    </div>
+    <ngb-alert class="mt-2" [dismissible]="false">
+      <strong>Empty Comment!</strong> Please, insert some text before save.
+    </ngb-alert>
     }
   </div>
 </form>

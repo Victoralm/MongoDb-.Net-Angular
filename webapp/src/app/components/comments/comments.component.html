@@ -17,7 +17,7 @@
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="col col-6 pt-1 mb-5" style="min-width: 800px;">
 
-        <app-add-comment [movieIds]="movieIds"></app-add-comment>
+        <app-add-comment [movieIds]="movieIds" (getComments)="getComments()"></app-add-comment>
 
       </div>
     </div>
