@@ -1,13 +1,13 @@
 <div class="row">
   @for (comment of comments; track comment.id; let idx = $index) {
   <div class="col col-2 pt-1 d-flex align-items-stretch">
-    <div class="card" style="width: 18rem;">
+    <div class="card align-items-stretch" style="width: 18rem;">
       <h5 class="card-header">
         <a href="mailto:{{comment.email}}">{{comment.name}}</a>
       </h5>
       <div class="card-body">
         @if(!comment.edit) {
-        <div class="row d-flex" style="min-height: 80%;">
+        <div class="row d-flex" style="height: 145px;">
           <div class="col d-flex">
             @if(comment.text.length > 150)
             {
@@ -17,7 +17,7 @@
             }
           </div>
         </div>
-        <div class="row d-flex">
+        <div class="row d-flex" style="min-height: 42px;">
           <div class="col d-flex">
             <button style="height:42px !important;" type="button" class="btn btn-primary mt-auto"
               style="text-align: center;" (click)="toggleEdit(idx)" placement="top" ngbTooltip="Edit the comment">
@@ -34,13 +34,13 @@
           </div>
         </div>
         } @else {
-        <div class="row d-flex mb-1" style="min-height: 80%;">
+        <div class="row d-flex">
           <div class="col d-flex">
             <textarea class="form-control" aria-label="New Comment" rows="6" id="newText" name="newText" #newText
               [value]="comment.text">{{comment.text}}</textarea>
           </div>
         </div>
-        <div class="row">
+        <div class="row mt-2" style="min-height: 42px;">
           <div class="col">
             <button type="button" class="btn btn-success" style="text-align: center;"
               (click)="updateComment(comment.id, newText.value)" placement="top" ngbTooltip="Update the comment">

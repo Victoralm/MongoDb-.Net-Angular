@@ -31,7 +31,6 @@ export class CommentsService {
   public addComment(newComment: CommentsApi, movieId: string) {
     return this.http.post(`${this.config.api_url}?movieId=${movieId}`, newComment)
     .pipe(
-        map((obj) => obj),
         take(1),
         catchError((e) => {
           console.log('Error caught in service');
